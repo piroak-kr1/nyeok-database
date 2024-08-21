@@ -55,9 +55,6 @@ def include_object(
 ) -> bool:
     if type_ != "table":
         return True
-    # ignore "tiger", "topology" schema
-    if object.schema != "public":
-        return False
     # ignore some tables manually (ex. spatial_ref_sys)
     return not (name in exclude_tables)
 
@@ -84,6 +81,8 @@ def run_migrations_offline() -> None:
     )
 
     with context.begin_transaction():
+        # Excluding "tiger" or "topology" schema
+        context.execute("SET search_path TO public")
         context.run_migrations()
 
 
@@ -108,6 +107,9 @@ def run_migrations_online() -> None:
         )
 
         with context.begin_transaction():
+            # Search "public" schema only
+            # Excluding "tiger" or "topology" schema
+            context.execute("SET search_path TO public")
             context.run_migrations()
 
 
