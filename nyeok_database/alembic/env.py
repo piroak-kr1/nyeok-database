@@ -53,7 +53,13 @@ def include_object(
     reflected: bool,
     compare_to: SchemaItem | None,
 ) -> bool:
-    return not (type_ == "table" and name in exclude_tables)
+    if type_ != "table":
+        return True
+    # ignore "tiger", "topology" schema
+    if object.schema != "public":
+        return False
+    # ignore some tables manually (ex. spatial_ref_sys)
+    return not (name in exclude_tables)
 
 
 def run_migrations_offline() -> None:
