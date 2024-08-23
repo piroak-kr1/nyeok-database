@@ -1,5 +1,5 @@
-from db import SessionLocal
-from tables import Place
+from .db import SessionLocal
+from .tables import Place
 
 
 def insert_one():

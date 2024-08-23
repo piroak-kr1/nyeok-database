@@ -11,8 +11,6 @@ from sqlalchemy.orm.session import Session
 engine = create_engine("postgresql://superuser:wrong_password@localhost:5432/database")
 
 # NOTE: Do not create table - Alembic will manage schema
-# Create tables if not exists
-# TableBase.metadata.create_all(engine)
 
 SessionLocal = sessionmaker(bind=engine)
 
