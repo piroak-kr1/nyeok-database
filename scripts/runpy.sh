@@ -11,13 +11,15 @@
 
 # Usage: ./runpy.sh app/ app/tourapi/main.py
 
+scripts_dir=$(dirname "$0")
+runpoetry="$scripts_dir/runpoetry.sh"
+
 if [[ -z "$1" || -z "$2" ]]; then
     echo "Usage: $0 <directory> <directory/script.py>"
     exit 1
 fi
 
-scripts_dir=$(dirname "$0")
 py_dir_abspath=$(realpath "$1")
 py_script_abspath=$(realpath "$2")
 
-"$scripts_dir/runpoetry.sh" "$py_dir_abspath" python "$py_script_abspath"
+"$runpoetry" "$py_dir_abspath" python "$py_script_abspath"

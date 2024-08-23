@@ -2,11 +2,10 @@ from logging.config import fileConfig
 import re
 from typing import Literal
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import engine_from_config, pool
+from sqlalchemy.schema import SchemaItem
 
 from alembic import context
-from sqlalchemy.schema import SchemaItem
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -19,7 +18,7 @@ if config.config_file_name is not None:
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-from tables import TableBase
+from database_core.tables import TableBase
 
 target_metadata = TableBase.metadata
 

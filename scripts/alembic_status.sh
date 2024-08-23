@@ -1,13 +1,16 @@
+scripts_dir=$(dirname "$0")
+runpoetry="$scripts_dir/runpoetry.sh"
+
 echo "== Running Alembic History =="
-./poetry.sh alembic history
+"$runpoetry" database-setup/database_setup alembic history
 
 echo ""
 echo "== Running Alembic Current =="
-./poetry.sh alembic current 2>/dev/null
+"$runpoetry" database-setup/database_setup alembic current 2>/dev/null
 
 echo ""
 echo "== Running Alembic Check =="
-./poetry.sh alembic check 2>/dev/null
+"$runpoetry" database-setup/database_setup alembic check 2>/dev/null
 
 # NOTE: Ways to delete revision
 # delete a file in alembic/versions
