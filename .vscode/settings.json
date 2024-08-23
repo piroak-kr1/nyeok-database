@@ -1,8 +1,8 @@
 {
   "python.analysis.autoSearchPaths": false,
   "python.analysis.extraPaths": [
-    "nyeok_database",
-    "/home/wsl/Develop-WSL/nyeok-backend/env/lib/python3.12/site-packages",
+    "database-core/database_core",
+    "database-setup/database_setup"
   ],
   "python.analysis.packageIndexDepths": [
     {
