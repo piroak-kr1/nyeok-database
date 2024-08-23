@@ -1,16 +1,18 @@
+# Setup database connection and expose
+
 from typing import Any, Generator
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
 
-# Setup database connection
 # NOTE: postgres trust local connections
 # TODO: make as environment variable (also in alembic.ini)
 engine = create_engine("postgresql://superuser:wrong_password@localhost:5432/database")
 
+# NOTE: Do not create table - Alembic will manage schema
 # Create tables if not exists
-# TableBase.metadata.create_all(engine) # Alembic should manage schema
+# TableBase.metadata.create_all(engine)
 
 SessionLocal = sessionmaker(bind=engine)
 
